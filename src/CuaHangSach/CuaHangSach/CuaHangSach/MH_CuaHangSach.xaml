@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CuaHangSach.MH_CuaHangSach">
+    <ScrollView>
+    <StackLayout Margin="20, 10">
+        <Frame x:Name="frmDangNhap" BorderColor="LightGray"
+       HasShadow="True"
+       CornerRadius="12"
+       HeightRequest="130"
+       WidthRequest="80" Margin="0,10" Padding="15">
+            <Frame.Background>
+                <!-- StartPoint defaults to (0,0) -->
+                <LinearGradientBrush EndPoint="1,0">
+                    <GradientStop Color="{DynamicResource PrimaryColor}"
+                          Offset="0.1" />
+                    <GradientStop Color="Black"
+                          Offset="1.0" />
+                </LinearGradientBrush>
+            </Frame.Background>
+            <Frame.Content>
+                <Grid RowSpacing="10" ColumnSpacing="10" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="Chào mừng bạn đến với Cửa Hàng Sách" FontSize="Medium" TextColor="White" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand"/>
+                        <Frame CornerRadius="10" 
+                               Padding="0"
+                               Margin="5"
+                               IsClippedToBounds="True"  Grid.Column="2" Grid.Row="0" HeightRequest="60">
+                            <Image Source="icon_chsach.png" HorizontalOptions="EndAndExpand"></Image>
+                        </Frame>
+                        <Button x:Name="btnDangNhap" Text="Đăng nhập" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" BorderColor="Black" BorderWidth="0.5"
+                                ImageSource="icon_login.xml"
+                                ContentLayout="Right" Clicked="btnDangNhap_Clicked"></Button>
+                </Grid>
+            </Frame.Content>
+        </Frame>
+
+        <Label Text="Sách mới" FontSize="28" TextColor="{DynamicResource PrimaryColor}"></Label>
+        <CollectionView x:Name="lstSachMoi"
+                ItemsLayout="HorizontalList" HeightRequest="250" SelectionMode="Single" SelectionChanged="lstSachMoi_SelectionChanged">
+            <CollectionView.ItemTemplate>
+                <DataTemplate> 
+                    <StackLayout WidthRequest="120">
+                        <Frame CornerRadius="10" 
+                               Padding="0"
+                               Margin="5"
+                               IsClippedToBounds="True" >
+                            <Image Source = "{Binding Hinh}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></Image>
+                        </Frame>
+
+                            <Label Text="{Binding TenSach}" FontSize="15" LineBreakMode="TailTruncation"  TextColor="{DynamicResource PrimaryTextColor}" />
+                        <Label 
+                       Text="{Binding TacGia}"
+                       FontSize="Small"
+                       FontAttributes="Italic"
+                          TextColor="{DynamicResource TertiaryTextColor}" 
+                        LineBreakMode="TailTruncation"/>
+                        <Label
+                       Text="{Binding DonGia, StringFormat='{}{0:### ### ###} đ'}"
+                        FontAttributes="Bold"
+                        LineBreakMode="TailTruncation"
+                            TextColor="{DynamicResource TertiaryTextColor}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+            <Label x:Name="lblDeXuat" Text="Đề xuất cho bạn" FontSize="28" TextColor="{DynamicResource PrimaryColor}"></Label>
+            <CollectionView x:Name="lstSachDeXuat"
+                ItemsLayout="HorizontalList" HeightRequest="250" SelectionMode="Single" SelectionChanged="lstSachDeXuat_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout WidthRequest="120">
+                            <Frame CornerRadius="10" 
+                               Padding="0"
+                               Margin="5"
+                               IsClippedToBounds="True" >
+                                <Image Source = "{Binding Hinh}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></Image>
+                            </Frame>
+
+                            <Label Text="{Binding TenSach}" FontSize="15" LineBreakMode="TailTruncation"/>
+                            <Label 
+                       Text="{Binding TacGia}"
+                       FontSize="Small"
+                       FontAttributes="Italic"
+                        LineBreakMode="TailTruncation"/>
+                            <Label
+                       Text="{Binding DonGia, StringFormat='{}{0:### ### ###} đ'}"
+                        FontAttributes="Bold"
+                        LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Frame BorderColor="LightGray"
+                   HasShadow="True"
+                   CornerRadius="12"
+                   HeightRequest="130"
+                   WidthRequest="80" Margin="0,10" Padding="15">
+                <Frame.Background>
+                    <!-- StartPoint defaults to (0,0) -->
+                    <LinearGradientBrush EndPoint="1,0">
+                        <GradientStop Color="DarkBlue"
+                          Offset="0.1" />
+                        <GradientStop Color="DarkOrange"
+                          Offset="0.5" />
+                        <GradientStop Color="Red"
+                          Offset="1.0" />
+                    </LinearGradientBrush>
+                </Frame.Background>
+                <Frame.Content>
+                    <Grid RowSpacing="10" ColumnSpacing="10" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Label Text="Trọn bộ Lord Of The Rings" FontSize="Large" TextColor="White" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" VerticalOptions="CenterAndExpand"/>
+                        <Frame CornerRadius="10" 
+                               Padding="0"
+                               Margin="5"
+                               IsClippedToBounds="True"  Grid.Column="2" Grid.Row="0" HeightRequest="60">
+                            <Image Source="icon_chsach.png" HorizontalOptions="EndAndExpand"></Image>
+                        </Frame>
+                        <Button x:Name="btnCollection1" Text="Đến bộ sưu tập"
+                                ImageSource="icon_arrow_forward.xml"
+                                ContentLayout="Right, 50"
+                                BorderColor="Black" BorderWidth="0.5"
+                                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Clicked="btnCollection1_Clicked"></Button>
+                    </Grid>
+                </Frame.Content>
+            </Frame>
+
+        <Label Text="Sách giá ưu đãi" FontSize="28" TextColor="{DynamicResource PrimaryColor}"></Label>
+            <CollectionView x:Name="lstSachUuDai" ItemsLayout="HorizontalList" HeightRequest="250" SelectionMode="Single" SelectionChanged="lstSachUuDai_SelectionChanged" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout WidthRequest="120">
+                            <Frame CornerRadius="10" 
+                               Padding="0"
+                               Margin="5"
+                               IsClippedToBounds="True" >
+                                <Image Source = "{Binding Hinh}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></Image>
+                            </Frame>
+
+                            <Label 
+                       Text="{Binding TenSach}"
+                       FontSize="15" LineBreakMode="TailTruncation" TextColor="{DynamicResource PrimaryTextColor}"/>
+                            <Label 
+                       Text="{Binding TacGia}"
+                       TextColor="{DynamicResource TertiaryTextColor}"
+                       FontSize="Small"
+                       FontAttributes="Italic"
+                        LineBreakMode="TailTruncation"/>
+                            <Label
+                       Text="{Binding DonGia, StringFormat='{}{0:### ### ###} đ'}"
+                        FontAttributes="Bold"
+                         TextColor="{DynamicResource TertiaryTextColor}"
+                        LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
+
+        

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:FastEntry="clr-namespace:XamarinFastEntrySample.FastEntry;assembly=XamarinFastEntry.Behaviors"
+             x:Class="CuaHangSach.GioHang.MH_ThanhToan"
+             Title="Thanh toán">
+    <ContentPage.Content>
+        <Grid BackgroundColor="GhostWhite">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="5" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <CollectionView x:Name="lstSachView" SelectionMode="None" Grid.Row="0" Grid.ColumnSpan="2" Margin="10">
+                <CollectionView.Header>
+                    <StackLayout>
+                        <Label Text="Thông tin đơn hàng" FontSize="Large" TextColor="{DynamicResource PrimaryColor}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="{DynamicResource PrimaryColor}" Margin="0,0,0,10"></BoxView>
+                        <Label Text="Tỉnh"/>
+                        <Entry x:Name="txtTinh" Placeholder="Nhập Tỉnh"/>
+
+                        <Label Text="Thành phố/Quận"/>
+                        <Entry x:Name="txtTPQuan" Placeholder="Nhập Thành phố/Quận"/>
+
+                        <Label Text="Địa chỉ"/>
+                        <Entry x:Name="txtDiaChiNha" Placeholder="Nhập Địa chỉ"></Entry>
+
+                        <Label Text="Số điện thoại"/>
+                        <Entry x:Name="txtSoDienThoai" Placeholder="Nhập Số điện thoại"></Entry>
+
+                        <Label Text="Phương thức thanh toán"/>
+                        <StackLayout RadioButtonGroup.GroupName="PTThanhToan" Orientation="Horizontal" BackgroundColor="WhiteSmoke">
+                            <RadioButton Value="TheNganHang" Content="Thẻ ngân hàng" IsChecked="True" CheckedChanged="RadioButton_CheckedChanged" TextColor="{DynamicResource PrimaryTextColor}"></RadioButton>
+                            <RadioButton Value="TienMat" Content="Tiền mặt" CheckedChanged="RadioButton_CheckedChanged" TextColor="{DynamicResource PrimaryTextColor}"></RadioButton>
+                        </StackLayout>
+                        <Label x:Name="lblCardNumber" Text="Card Number"/>
+                        <Entry x:Name="txtCardNumber"
+                               Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <FastEntry:XamarinFastEntryBehaviour Mask="#### #### #### ####" MaxLength="19"/>
+							</Entry.Behaviors>
+                        </Entry>
+                        
+                        <Label x:Name="lblExpiry" Text="Expiry"/>
+                        <Entry Grid.Row="5"
+                               Keyboard="Numeric"
+                               Placeholder="MM/YY"
+                               x:Name="txtExpiry">
+                            <Entry.Behaviors>
+                                <FastEntry:XamarinFastEntryBehaviour Mask="##/##" MaxLength="5"/>
+                            </Entry.Behaviors>
+                        </Entry>
+
+                        <Label x:Name="lblCvv" Text="CVV"/>
+                        <Entry Grid.Row="5" Keyboard="Numeric" x:Name="txtCvv">
+                            <Entry.Behaviors>
+                                <FastEntry:XamarinFastEntryBehaviour Mask="###" MaxLength="3"/>
+                            </Entry.Behaviors>
+                        </Entry>
+                        <Label Text="Chi tiết đơn hàng" FontSize="Large" Margin="0,20,0,0" TextColor="{DynamicResource PrimaryColor}"/>
+                        <BoxView HeightRequest="1" BackgroundColor="{DynamicResource PrimaryColor}" Margin="0,0,0,10"></BoxView>
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate >
+                    <DataTemplate>
+                        <Grid ColumnSpacing="10" RowSpacing="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1.5*" />
+                                <ColumnDefinition Width="6*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Frame CornerRadius="3" 
+                               Padding="0"
+                               Margin="5"
+                               IsClippedToBounds="True" Grid.Column ="0" HeightRequest="30">
+                                <Image Source = "{Binding Hinh}" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></Image>
+                            </Frame>
+                            <StackLayout  Grid.Row="0" Grid.Column="1" >
+                                <Label Text="{Binding TenSach}" FontSize="14" LineBreakMode="TailTruncation"/>
+                                <Label  Text="{Binding TacGia}" FontSize="12" FontAttributes="Italic" LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding DonGia, StringFormat='{}{0:### ### ###} đồng'}"  FontSize="12" FontAttributes="Bold" LineBreakMode="TailTruncation"/>
+                            </StackLayout>
+                            <Label Text="{Binding SoLuong, StringFormat='x{0}'}" Grid.Row="0" Grid.Column="2" HorizontalOptions="End" TextColor="{DynamicResource PrimaryColor}" FontAttributes="Bold"></Label>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            <BoxView Grid.Row="1" Grid.Column="0" BackgroundColor="LightGray" Grid.ColumnSpan="2" Margin="0,0,0,4"/>
+            <StackLayout Grid.Row="2" Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label x:Name="lblTongCong" TextColor="Black"  HorizontalTextAlignment="End" />
+                <Label x:Name="lblThanhTien" TextColor="{DynamicResource PrimaryColor}" FontAttributes="Bold" FontSize="18" HorizontalTextAlignment="End"/>
+            </StackLayout>
+            <Button x:Name="btnDatHang" Grid.Row="2" Grid.Column="1" Text="Đặt hàng" Margin="3,0,10,0" Clicked="btnDatHang_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

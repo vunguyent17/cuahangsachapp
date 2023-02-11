@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CuaHangSach.TaiKhoan.MH_ChinhSuaMatKhau"
+             Title="Thay đổi mật khẩu">
+    <ContentPage.Content>
+        <StackLayout Margin="10, 20">
+            <Label Text="Nhập mật khẩu cũ" />
+            <Entry x:Name="txtMatKhauCu" IsPassword="True" />
+            <Label Text="Nhập mật khẩu mới" />
+            <Entry x:Name="txtMatKhauMoi" IsPassword="True" />
+            <Label Text="Nhập lại mật khẩu mới" />
+            <Entry x:Name="txtNhapLaiMatKhauMoi" IsPassword="True" />
+            <Button x:Name="btnXacNhanDoiMatKhau" Text="Xác nhận Đổi mật khẩu" Clicked="btnXacNhanDoiMatKhau_Clicked" Margin="0, 10, 0, 5"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

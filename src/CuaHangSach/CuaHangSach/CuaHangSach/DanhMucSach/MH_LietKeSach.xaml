@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:CuaHangSach.DanhMucSach"
+            x:Class="CuaHangSach.DanhMucSach.MH_LietKeSach"
+            Title="Danh mục sách"
+            SelectedTabColor="#800080"
+            UnselectedTabColor="#c894c8"
+            BarBackgroundColor="#f6d3f6"
+            >
+    <!--Pages can be added as references or inline-->
+    <local:MH_LoaiSach Title="Thể loại" />
+        <local:MH_HienThiSachTheoLoai Title="Tất cả sách" />
+         
+</TabbedPage>

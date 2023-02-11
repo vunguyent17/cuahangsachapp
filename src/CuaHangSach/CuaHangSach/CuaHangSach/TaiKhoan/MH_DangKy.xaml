@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CuaHangSach.TaiKhoan.MH_DangKy"
+             Title="Đăng ký tài khoản mới">
+    <ContentPage.Content>
+        <StackLayout Margin="10, 20">
+            <Label Text="Họ tên"/>
+            <Entry x:Name="txtNguoiDung" Keyboard="Text"/>
+            <Label Text="Email" />
+            <Entry x:Name="txtEmail" Keyboard="Email"/>
+            <Label Text="Tên đăng nhập" />
+            <Entry x:Name="txtTenDN"/>
+            <Label Text="Mật khẩu" />
+            <Entry x:Name="txtMatKhau" IsPassword="True" />
+            <Label Text="Nhập lại mật khẩu" />
+            <Entry x:Name="txtNhapLaiMatKhau" IsPassword="True" PlaceholderColor="{DynamicResource TertiaryTextColor}"/>
+            <Button x:Name="btnDangKy" Text="Tạo tài khoản" Clicked="btnDangKy_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

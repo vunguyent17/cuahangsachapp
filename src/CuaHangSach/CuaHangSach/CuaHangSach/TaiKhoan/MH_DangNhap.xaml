@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CuaHangSach.TaiKhoan.MH_DangNhap"
+             Title="Đăng nhập">
+    <StackLayout Margin="25, 20">
+        <Label Text="Tên đăng nhập"/>
+        <Entry x:Name="txtTenDN"/>
+        <Label Text="Mật khẩu"/>
+        <Entry x:Name="txtMatKhau" IsPassword="True" />
+        <Button x:Name="btnDangNhap" Text="Đăng nhập" Clicked="btnDangNhap_Clicked" Margin="0, 10, 0, 5"/>
+        <Button x:Name="btnDangKy" Text="Đăng ký" Clicked="btnDangKy_Clicked"
+                BackgroundColor="White"
+                TextColor="{DynamicResource PrimaryColor}"
+                BorderWidth="1.5"
+                BorderColor="{DynamicResource PrimaryColor}" Margin="0, 5, 0, 10"/>
+    </StackLayout>
+</ContentPage>

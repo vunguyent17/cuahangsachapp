@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CuaHangSach.TaiKhoan.MH_NguoiDung"
+             Title="Trang cá nhân">
+    <ContentPage.Content>
+        <StackLayout>
+           <Grid x:Name="gridTTNguoiDung" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="#f6d3f6" Padding="20" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Frame CornerRadius="10" 
+                               Padding="0"
+                               Margin="5"
+                               IsClippedToBounds="True"  Grid.Column="0" Grid.Row="0" HeightRequest="60">
+                    <Image Source="icon_chsach.png" HorizontalOptions="EndAndExpand"></Image>
+                </Frame>
+
+                <ImageButton Grid.Column="3" Grid.Row="0" x:Name="btnNguoiDungSettings"
+                             Source="icon_settings.xml" BackgroundColor="Transparent"
+                             HeightRequest="30" WidthRequest="30" 
+                             VerticalOptions="StartAndExpand" HorizontalOptions="EndAndExpand"
+                             Clicked="btnNguoiDungSettings_Clicked"/>
+               
+                <StackLayout Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+                    <Label FontSize="16" Text="Chào bạn" TextColor="Black"></Label>
+                    <Label x:Name="lblTenNguoiDung" FontAttributes="Bold" TextColor="{DynamicResource PrimaryColor}" FontSize="Medium"></Label>
+                </StackLayout>
+                <Button x:Name="btnDangXuat" Text="Đăng xuất" FontSize="14"
+                        HeightRequest="30"
+                                BorderColor="Black" BorderWidth="0.5" 
+                                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Clicked="btnDangXuat_Clicked"></Button>
+                <Button x:Name="btnDangKy" Text="Đăng ký" FontSize="14" 
+                                BorderColor="{DynamicResource PrimaryColor}" BorderWidth="1"
+                                TextColor="{DynamicResource PrimaryColor}"
+                                BackgroundColor="White"
+                                Grid.Column="2" Grid.Row="1"  Grid.ColumnSpan="2" Clicked="btnDangKy_Clicked"></Button>
+            </Grid>
+
+            <StackLayout Padding="20">
+                <Label Text="Đơn hàng của bạn" FontSize="Large" TextColor="{DynamicResource PrimaryColor}"/>
+                <BoxView HeightRequest="1" BackgroundColor="{DynamicResource PrimaryColor}" Margin="0,0,0,0"></BoxView>
+                <CollectionView x:Name="lstDHView" SelectionMode="Single" SelectionChanged="lstDHView_SelectionChanged">
+                    <CollectionView.ItemTemplate >
+                        <DataTemplate>
+                            <ContentView>
+                                <Frame CornerRadius="20" Padding="0" IsClippedToBounds="True" Margin="5,10" BackgroundColor="White">
+                                    <Grid ColumnSpacing="10" BackgroundColor="GhostWhite" Padding="10" >
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="30" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="0.5*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="0.7*" />
+                                            <ColumnDefinition Width="0.3*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label FontSize="10" Text="Mã ĐH" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                        <Label FontSize="10" Text="Ngày đặt" Grid.Row="0" Grid.Column="1" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                        <Label FontSize="10" Text="Thành tiền" Grid.Row="0" Grid.Column="2" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                                        <Label FontSize="10" Text="Đã thanh toán" Grid.Row="0" Grid.Column="3" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+
+                                        <Label FontSize="12" Text="{Binding DataDonHang.MaDonHang}" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center" FontAttributes="Bold" TextColor="{DynamicResource PrimaryColor}" LineBreakMode="TailTruncation"/>
+                                        <Label FontSize="12" Text="{Binding DataDonHang.NgayDat}" Grid.Row="1" Grid.Column="1" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                        <Label FontSize="12" Text="{Binding DataDonHang.ThanhTien, StringFormat='{}{0:### ### ###} đ'}" Grid.Row="1" Grid.Column="2" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+                                        <Label FontSize="12" Text="{Binding DaThanhToanView}" Grid.Row="1" Grid.Column="3" HorizontalTextAlignment="Center" LineBreakMode="TailTruncation"/>
+
+                                        <Image Source="icon_chevron_right" Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"/>
+                                    </Grid>
+                                </Frame>
+                            </ContentView>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

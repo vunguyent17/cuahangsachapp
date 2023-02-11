@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CuaHangSach.GioHang.MH_DatThanhCong"
+             Title="Đặt hàng thành công">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <Image Source="icon_chsach.png" HorizontalOptions="Center" HeightRequest="100"/>
+            <Label Text="Bạn đã đặt thành công đơn hàng"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" TextColor="{DynamicResource PrimaryColor}" FontSize="Large"/>
+            <Label Text="Cảm ơn bạn đã mua hàng tại Cửa hàng sách"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

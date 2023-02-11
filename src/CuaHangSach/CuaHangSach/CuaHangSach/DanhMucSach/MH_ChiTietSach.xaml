@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CuaHangSach.DanhMucSach.MH_ChiTietSach"
+             Title="{Binding TenSach}">
+    <ContentPage.Content>
+        <ScrollView HeightRequest="2000">
+
+            <Grid x:Name="chitietsach" Padding="20" RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="300" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Row="0" Grid.Column="0" CornerRadius="10" VerticalOptions="StartAndExpand"
+                   Padding="0" 
+                   IsClippedToBounds="True" HeightRequest="145">
+                    <Image Source = "{Binding Hinh} " VerticalOptions="StartAndExpand" Aspect="Fill"></Image>
+                </Frame>
+
+                <StackLayout Grid.Row="0" Grid.Column="1" VerticalOptions="StartAndExpand" Margin="10, 0">
+                    <Label Text="{Binding TenSach}"
+                       Margin="5" 
+                       FontSize="Medium"
+                       TextColor="{DynamicResource PrimaryTextColor}" /> 
+                    <Label Text="{Binding TacGia}"
+                        FontSize="Small" Margin="5" TextColor="{DynamicResource TertiaryTextColor}"/>
+                    <Label Text="{Binding DonGia, StringFormat='{}{0:### ### ###} đồng'}"  FontSize="Small" Margin="5" TextColor="{DynamicResource TertiaryTextColor}"
+                           FontAttributes="Bold"/>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Button x:Name="btnThemVaoGioHang" Text="Thêm sách vào giỏ hàng" HeightRequest="50" Clicked="btnThemVaoGioHang_Clicked" BindingContext="{Binding MaSach}"></Button>
+                </StackLayout>
+
+
+                <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                    <TableView Intent="Settings">
+                        <TableRoot>
+                            <TableSection>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <Label Text="ISBN" TextColor="{DynamicResource TertiaryTextColor}"/>
+                                        <Label Text="{Binding ISBN}" HorizontalOptions="EndAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <Label Text="Mã sách" TextColor="{DynamicResource TertiaryTextColor}"/>
+                                        <Label Text="{Binding MaSach }" HorizontalOptions="EndAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <Label Text="Năm xuất bản" TextColor="{DynamicResource TertiaryTextColor}"/>
+                                        <Label Text="{Binding NamXuatBan}" HorizontalOptions="EndAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <Label Text= "Nhà xuất bản" TextColor="{DynamicResource TertiaryTextColor}"/>
+                                        <Label Text="{Binding NhaXuatBan}" HorizontalOptions="EndAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                                <ViewCell>
+                                    <StackLayout Orientation="Horizontal" VerticalOptions="Center">
+                                        <Label Text="Thể loại" TextColor="{DynamicResource TertiaryTextColor}"/>
+                                        <Label x:Name="lblmaloai" Text="{Binding TenLoai}" HorizontalOptions="EndAndExpand" TextColor="{DynamicResource PrimaryTextColor}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </TableSection>
+                        </TableRoot>
+                    </TableView>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

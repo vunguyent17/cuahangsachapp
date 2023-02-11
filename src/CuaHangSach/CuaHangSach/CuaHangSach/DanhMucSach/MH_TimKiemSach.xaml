@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CuaHangSach.DanhMucSach.MH_TimKiemSach">
+    <Shell.TitleView>
+        <SearchBar x:Name="searchSach" Placeholder="Tìm kiếm sách" Margin="10" TextChanged="searchSach_TextChanged" BackgroundColor="White"/>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <CollectionView x:Name="lstSachView" SelectionMode="Single" Margin="20"  SelectionChanged="lstSachView_SelectionChanged" >
+            <CollectionView.ItemTemplate >
+                <DataTemplate>
+                    <Grid ColumnSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="150" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="4*" />
+                            <ColumnDefinition Width="6*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="{Binding STT}"  HorizontalTextAlignment="Center" Grid.Column="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
+
+                        <Frame CornerRadius="10" 
+                               Padding="0"
+                               Margin="5"
+                               IsClippedToBounds="True" Grid.Column ="1">
+                            <Image Source = "{Binding SachData.Hinh}" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ></Image>
+                        </Frame>
+                        <StackLayout Grid.Column="2" VerticalOptions="CenterAndExpand">
+                            <Label 
+                       Text="{Binding SachData.TenSach}"
+                                FontSize="20"/>
+                            <Label 
+                       Text="{Binding SachData.TacGia}"
+                       FontSize="Small"
+                       FontAttributes="Italic"
+                        LineBreakMode="TailTruncation"/>
+                            <Label
+                       Text="{Binding SachData.DonGia, StringFormat='{}{0:### ### ###} đồng'}"
+                        FontAttributes="Bold"
+                        LineBreakMode="TailTruncation"/>
+                        </StackLayout>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </ContentPage.Content>
+</ContentPage>
